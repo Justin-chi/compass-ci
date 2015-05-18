@@ -1,6 +1,6 @@
 cd ..
 rm -rf compass-core
-git clone http://git.openstack.org/stackforge/compass-core -b dev/experimental
+git clone https://github.com/Justin-chi/compass-core -b dev/experimental
 cd compass-core
 virtualenv venv
 source venv/bin/activate
