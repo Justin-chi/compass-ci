@@ -133,6 +133,8 @@ source ${INCLUDE_DIR}/build.sh.debug
 ############################################################################
 # BEGIN of main
 #
+build_prepare
+
 while getopts "s:c:v:f:l:r:RtTh" OPTION
 do
     case $OPTION in
