@@ -21,7 +21,7 @@ export ISOCACHE = $(BUILD_CACHE_URI)/iso
 #export ISOCACHE = $(shell pwd)/$(shell basename $(ISOSRC))
 export PRODNO = "OPNFV_BGS"
 export REVSTATE = "P0000"
-export RELEASE_DIR = $(shell pwd)/release
+export RELEASE_DIR = $(RESULT_DIR)
 
 # Note! Invoke with "make REVSTATE=RXXXX all" to make release build!
 # Invoke with ICOCACHE=/full/path/to/iso if cached ISO is in non-standard location.
@@ -68,14 +68,14 @@ prepare-cache:
 mount-ubuntuiso:
 	@echo "===Mounting ubuntu ISO in $(OLDISO_DIR)"
 	-mkdir -p $(OLDISO_DIR) $(NEWIMAGE_DIR)
-	@fuseiso $(ISOCACHE)/*.iso $(OLDISO_DIR)
+	@sudo mount -o loop $(ISOCACHE)/*.iso $(OLDISO_DIR)
 	cp $(OLDISO_DIR)/. $(NEWIMAGE_DIR) -rp
 
 .PHONY: umount-ubuntuiso
 umount-ubuntuiso:
 	@set +e
 	@echo "===Unmounting ubuntu ISO from $(OLDISO_DIR)"
-	@fusermount -u $(OLDISO_DIR)
+	@sudo umount $(OLDISO_DIR)
 	@set -e
 
 .PHONY: install-package
@@ -90,17 +90,19 @@ install-package:
 	#@chroot $(NEWFILESYSTEM) sh ./install.sh
 	@chmod +w $(MANIFEST_DIR)
 	@chroot $(NEWFILESYSTEM) dpkg-query -W --showformat='$${Package} $${Version}\n' | tee ${MANIFEST_DIR}
-	@rm $(SQUASHFS_DIR)
+	@rm -f $(SQUASHFS_DIR)
 	@mksquashfs $(NEWFILESYSTEM) $(SQUASHFS_DIR)
 	@chmod +w $(FSSIZE_DIR)
 	cd $(NEWISO_DIR); \
 	(du -sx --block-size=1 $(NEWFILESYSTEM) | cut -f1 ) | tee ${FSSIZE_DIR}
+	@chmod +w $(NEWIMAGE_DIR)/md5sum.txt
 	cd $(NEWIMAGE_DIR); \
 	find . -type f -print0 | xargs -0 md5sum | grep -v "\./md5sum.txt" | tee ./md5sum.txt
 
 .PHONY: make-iso
 make-iso:
 	@echo "===Building OPNFV iso"
+	chmod +wx $(NEWIMAGE_DIR)/isolinux/isolinux.bin
 	cd $(NEWIMAGE_DIR); \
 	mkisofs -r -V "OPNFV" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-14.04-amd64-opnfv.iso .
 

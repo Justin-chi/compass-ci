@@ -84,7 +84,7 @@ EOF
 # BEGIN of variables to customize
 #
 BUILD_BASE=$(readlink -e ../build/)
-RESULT_DIR="${BUILD_BASE}/release"
+export RESULT_DIR="${BUILD_BASE}/release"
 BUILD_SPEC="${BUILD_BASE}/config.mk"
 CACHE_DIR="cache"
 LOCAL_CACHE_ARCH_NAME="compass-cache"
