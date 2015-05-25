@@ -17,7 +17,7 @@ SHELL = /bin/bash
 #Input args
 export UNIT_TEST = FALSE
 export INTERACTIVE = TRUE
-export ISOSRC = file:$(shell pwd)/ubuntu
+export ISOSRC = file:$(BUILD_CACHE_URI)/iso
 export ISOCACHE = $(shell pwd)/$(shell basename $(ISOSRC))
 export PRODNO = "OPNFV_BGS"
 export REVSTATE = "P0000"
