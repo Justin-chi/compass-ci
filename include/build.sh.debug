@@ -1,0 +1,6 @@
+#!/bin/bash
+
+build_prepare () {
+    echo "install build packages"
+    sudo apt-get install -y fuseiso squashfs-tools gsutil genisoimage
+}
