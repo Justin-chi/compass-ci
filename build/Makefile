@@ -17,8 +17,8 @@ SHELL = /bin/bash
 #Input args
 export UNIT_TEST = FALSE
 export INTERACTIVE = TRUE
-export ISOSRC = file:$(BUILD_CACHE_URI)/iso
-export ISOCACHE = $(shell pwd)/$(shell basename $(ISOSRC))
+export ISOCACHE = file:$(BUILD_CACHE_URI)/iso
+#export ISOCACHE = $(shell pwd)/$(shell basename $(ISOSRC))
 export PRODNO = "OPNFV_BGS"
 export REVSTATE = "P0000"
 export RELEASE_DIR = $(shell pwd)/release
