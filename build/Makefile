@@ -110,6 +110,9 @@ build-clean:
 	-rm -Rf $(NEWISO_DIR)
 	-rm -Rf $(RELEASE_DIR)
 
+.PHONY: clean
+clean: build-clean
+
 .PHONY: iso
 iso: build-clean mount-ubuntuiso umount-ubuntuiso install-package make-iso
 	-mkdir $(RELEASE_DIR)
