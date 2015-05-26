@@ -25,6 +25,9 @@ sudo pip install --upgrade ansible virtualenv
 centos65_box_vb_url=https://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.5-x86_64-v20140504.box
 centos65_box_vb_filename=$(basename ${centos65_box_vb_url})
 #wget ${precise_box_vb_url}
+source ${SCRIPT_DIR}/../deploy/func.sh
+tear_down_machines
+
 vagrant box list |grep centos65
 if [[ $? != 0 ]]; then
     wget ${centos65_box_vb_url}
