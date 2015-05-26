@@ -81,7 +81,7 @@ umount-ubuntuiso:
 .PHONY: install-package
 install-package:
 	@echo "===uncompress file system to add new files"
-	@find $(NEWISO_DIR) -name "filesystem.squashfs" |xargs unsquashfs
+	@fakeroot unsquashfs $(SQUASHFS_DIR)
 	@mv squashfs-root $(NEWFILESYSTEM)
 	cp -f /etc/resolv.conf $(NEWFILESYSTEM)/run/resolvconf/
 	cp /etc/hosts $(NEWFILESYSTEM)/etc/
