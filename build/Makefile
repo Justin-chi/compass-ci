@@ -70,6 +70,7 @@ mount-ubuntuiso:
 	-mkdir -p $(OLDISO_DIR) $(NEWIMAGE_DIR)
 	@sudo mount -o loop $(ISOCACHE)/*.iso $(OLDISO_DIR)
 	cp $(OLDISO_DIR)/. $(NEWIMAGE_DIR) -rp
+	chmod -R +wx $(NEWIMAGE_DIR)
 
 .PHONY: umount-ubuntuiso
 umount-ubuntuiso:
