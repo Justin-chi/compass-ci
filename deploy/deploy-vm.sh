@@ -4,7 +4,7 @@ git clone https://github.com/Justin-chi/compass-core -b dev/experimental
 cd compass-core
 virtualenv venv
 source venv/bin/activate
-pip install -i http://pypi.douban.com/simple -e .
+pip install -i http://pypi.douban.com/simple -e . --trusted-host pypi.douban.com
 if [[ ! -f /var/log/compass ]]; then
     sudo mkdir /var/log/compass
     sudo chown -R 777 /var/log/compass
