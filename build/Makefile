@@ -18,7 +18,7 @@ SHELL = /bin/bash
 export UNIT_TEST = FALSE
 export INTERACTIVE = TRUE
 export ISOCACHE = $(BUILD_CACHE_URI)/iso
-#export ISOCACHE = $(shell pwd)/$(shell basename $(ISOSRC))
+export PACKAGECACHE = $(BUILD_CACHE_URI)/deb
 export PRODNO = "OPNFV_BGS"
 export REVSTATE = "P0000"
 export RELEASE_DIR = $(RESULT_DIR)
@@ -40,6 +40,7 @@ export NEWFILESYSTEM := $(TOPDIR)/newiso/filesystem
 export MANIFEST_DIR = $(shell find $(NEWISO_DIR) -name filesystem.manifest)
 export SQUASHFS_DIR = $(shell find $(NEWISO_DIR) -name filesystem.squashfs)
 export FSSIZE_DIR = $(shell find $(NEWISO_DIR) -name filesystem.size)
+export APT_CACHE_DIR = $(NEWFILESYSTEM)/opt
 
 #
 # END of variables to customize
@@ -87,6 +88,7 @@ install-package:
 	cp -f /etc/resolv.conf $(NEWFILESYSTEM)/run/resolvconf/
 	cp /etc/hosts $(NEWFILESYSTEM)/etc/
 	cp $(INSTALL_DIR)/install.sh $(NEWFILESYSTEM)/
+	cp -f $(PACKAGECACHE)/*.deb $(APT_CACHE_DIR)
 	@echo "===install package on filesystem for newiso"
 	#@sudo chroot $(NEWFILESYSTEM) sh ./install.sh
 	@chmod +w $(MANIFEST_DIR)
