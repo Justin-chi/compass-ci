@@ -32,7 +32,8 @@ bin/client.py --logfile= --loglevel=debug --logdir= --compass_server="${COMPASS_
 --network_mapping="${NETWORK_MAPPING}" --package_config_json_file="${PACKAGE_CONFIG_FILENAME}" \
 --host_roles="${HOST_ROLES}" --default_roles="${DEFAULT_ROLES}" --switch_ips="${SWITCH_IPS}" \
 --machines=${machines//\'} --switch_credential="${SWITCH_CREDENTIAL}" \
---deployment_timeout="${DEPLOYMENT_TIMEOUT}" --${POLL_SWITCHES_FLAG} --dashboard_url="${DASHBOARD_URL}"
+--deployment_timeout="${DEPLOYMENT_TIMEOUT}" --${POLL_SWITCHES_FLAG} --dashboard_url="${DASHBOARD_URL}"\
+--cluster_vip="${VIP}"
 deploy_result=$?
 tear_down_machines
 cd ../compass-install
