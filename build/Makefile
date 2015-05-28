@@ -88,11 +88,11 @@ install-package:
 	cp /etc/hosts $(NEWFILESYSTEM)/etc/
 	cp $(INSTALL_DIR)/install.sh $(NEWFILESYSTEM)/
 	@echo "===install package on filesystem for newiso"
-	#@chroot $(NEWFILESYSTEM) sh ./install.sh
+	#@sudo chroot $(NEWFILESYSTEM) sh ./install.sh
 	@chmod +w $(MANIFEST_DIR)
-	@chroot $(NEWFILESYSTEM) dpkg-query -W --showformat='$${Package} $${Version}\n' | tee ${MANIFEST_DIR}
+	@sudo chroot $(NEWFILESYSTEM) dpkg-query -W --showformat='$${Package} $${Version}\n' | tee ${MANIFEST_DIR}
 	@rm -f $(SQUASHFS_DIR)
-	@mksquashfs $(NEWFILESYSTEM) $(SQUASHFS_DIR)
+	@fakeroot mksquashfs $(NEWFILESYSTEM) $(SQUASHFS_DIR)
 	@chmod +w $(FSSIZE_DIR)
 	cd $(NEWISO_DIR); \
 	(du -sx --block-size=1 $(NEWFILESYSTEM) | cut -f1 ) | tee ${FSSIZE_DIR}
