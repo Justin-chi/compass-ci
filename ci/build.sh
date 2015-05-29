@@ -378,15 +378,15 @@ mkdir -p ${BUILD_DIR}
 cp ${BUILD_BASE}/.versions ${BUILD_DIR}
 cp ${RESULT_DIR}/*.iso* ${BUILD_DIR}
 
-if [ $POPULATE_CACHE -eq 1 ]; then
-    if [ ! -z ${BUILD_CACHE_URI} ]; then
-	echo "Building cache ..."
-	tar --dereference -C ${BUILD_BASE} -caf ${BUILD_BASE}/${LOCAL_CACHE_ARCH_NAME}.tgz ${CACHE_DIR}
-	echo "Uploading cache ${BUILD_CACHE_URI}/${REMOTE_CACHE_ARCH_NAME}"
-	${REMOTE_ACCESS_METHD} -T ${BUILD_BASE}/${LOCAL_CACHE_ARCH_NAME}.tgz ${BUILD_CACHE_URI}/${REMOTE_CACHE_ARCH_NAME}.tgz
-	rm ${BUILD_BASE}/${LOCAL_CACHE_ARCH_NAME}.tgz
-    fi
-fi
+#if [ $POPULATE_CACHE -eq 1 ]; then
+#    if [ ! -z ${BUILD_CACHE_URI} ]; then
+#	echo "Building cache ..."
+#	tar --dereference -C ${BUILD_BASE} -caf ${BUILD_BASE}/${LOCAL_CACHE_ARCH_NAME}.tgz ${CACHE_DIR}
+#	echo "Uploading cache ${BUILD_CACHE_URI}/${REMOTE_CACHE_ARCH_NAME}"
+#	${REMOTE_ACCESS_METHD} -T ${BUILD_BASE}/${LOCAL_CACHE_ARCH_NAME}.tgz ${BUILD_CACHE_URI}/${REMOTE_CACHE_ARCH_NAME}.tgz
+#	rm ${BUILD_BASE}/${LOCAL_CACHE_ARCH_NAME}.tgz
+#    fi
+#fi
 echo "Success!!!"
 exit 0
 #
