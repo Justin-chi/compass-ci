@@ -116,7 +116,7 @@ export BUILD_CACHE_URI=
 BUILD_SPEC=
 BUILD_DIR=
 BUILD_LOG=
-BUILD_VERSION=
+export BUILD_VERSION=
 MAKE_ARGS=
 #
 # END of script assigned variables
