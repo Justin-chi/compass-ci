@@ -35,12 +35,12 @@ bin/client.py --logfile= --loglevel=debug --logdir= --compass_server="${COMPASS_
 --deployment_timeout="${DEPLOYMENT_TIMEOUT}" --${POLL_SWITCHES_FLAG} --dashboard_url="${DASHBOARD_URL}"\
 --cluster_vip="${VIP}"
 deploy_result=$?
-tear_down_machines
-cd ../compass-install
-sudo vagrant destroy compass_nodocker
-if [[ $deploy_result != 0 ]]; then
-    echo "deployment failed"
-    exit 1
-else
-    echo "deployment complete"
-fi
+#tear_down_machines
+#cd ../compass-install
+#sudo vagrant destroy compass_nodocker
+#if [[ $deploy_result != 0 ]]; then
+#    echo "deployment failed"
+#    exit 1
+#else
+#    echo "deployment complete"
+#fi
