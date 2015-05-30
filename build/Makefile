@@ -107,7 +107,7 @@ make-iso:
 	@echo "===Building OPNFV iso"
 	chmod +wx $(NEWIMAGE_DIR)/isolinux/isolinux.bin
 	cd $(NEWIMAGE_DIR); \
-	mkisofs -r -V "OPNFV" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-14.04-amd64-opnfv.iso .
+	mkisofs -r -V "OPNFV" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../opnfv-$(BUILD_VERSION).iso .
 
 .PHONY: build-clean
 build-clean:

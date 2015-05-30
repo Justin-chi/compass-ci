@@ -4,7 +4,7 @@ git clone https://github.com/Justin-chi/compass-core -b dev/experimental
 cd compass-core
 virtualenv venv
 source venv/bin/activate
-pip install -i http://pypi.douban.com/simple -e .
+pip install -i http://pypi.douban.com/simple -e . --trusted-host pypi.douban.com
 if [[ ! -f /var/log/compass ]]; then
     sudo mkdir /var/log/compass
     sudo chown -R 777 /var/log/compass
@@ -35,9 +35,9 @@ bin/client.py --logfile= --loglevel=debug --logdir= --compass_server="${COMPASS_
 --deployment_timeout="${DEPLOYMENT_TIMEOUT}" --${POLL_SWITCHES_FLAG} --dashboard_url="${DASHBOARD_URL}" \
 --cluster_vip="${VIP}"
 deploy_result=$?
-tear_down_machines
-cd ../compass-install
-sudo vagrant destroy compass_nodocker
+#tear_down_machines
+#cd ../compass-install
+#sudo vagrant destroy compass_nodocker
 if [[ $deploy_result != 0 ]]; then
     echo "deployment failed"
     exit 1
