@@ -38,9 +38,9 @@ deploy_result=$?
 #tear_down_machines
 #cd ../compass-install
 #sudo vagrant destroy compass_nodocker
-#if [[ $deploy_result != 0 ]]; then
-#    echo "deployment failed"
-#    exit 1
-#else
-#    echo "deployment complete"
-#fi
+if [[ $deploy_result != 0 ]]; then
+    echo "deployment failed"
+    exit 1
+else
+    echo "deployment complete"
+fi
