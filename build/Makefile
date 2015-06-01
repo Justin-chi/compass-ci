@@ -40,9 +40,9 @@ export NEWFILESYSTEM := $(TOPDIR)/newiso/filesystem
 export MANIFEST_DIR = $(shell find $(NEWISO_DIR) -name filesystem.manifest)
 export SQUASHFS_DIR = $(shell find $(NEWISO_DIR) -name filesystem.squashfs)
 export FSSIZE_DIR = $(shell find $(NEWISO_DIR) -name filesystem.size)
-export REPO_DIR = $(NEWFILESYSTEM)/opt
-export POOL_DIR = $(REPO_DIR)/repo/pool/main
-export DISTS_DIR = $(REPO_DIR)/repo/dists/trusty/main/binary-amd64
+export REPO_DIR = $(NEWFILESYSTEM)/opt/repo
+export POOL_DIR = $(REPO_DIR)/pool/main
+export DISTS_DIR = $(REPO_DIR)/dists/trusty/main/binary-amd64
 
 #
 # END of variables to customize
