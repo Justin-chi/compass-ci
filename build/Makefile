@@ -92,6 +92,7 @@ install-package:
 	-mkdir -p $(POOL_DIR) $(DISTS_DIR)
 	cp -f $(PACKAGECACHE)/*.deb $(POOL_DIR)
 	@sudo apt-ftparchive packages $(POOL_DIR) > $(DISTS_DIR)/Packages
+	@sed -i "s:$(NEWFILESYSTEM)::g" $(DISTS_DIR)/Packages
 	@gzip -c $(DISTS_DIR)/Packages | sudo tee $(DISTS_DIR)/Packages.gz > /dev/null
 	@echo "===install package on filesystem for newiso"
 	#@sudo chroot $(NEWFILESYSTEM) sh ./install.sh
