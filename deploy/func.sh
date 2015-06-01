@@ -8,7 +8,7 @@ function tear_down_machines() {
             exit 1
         fi
     done
-    virtmachines=$(sudo virsh list --all --name |grep pxe)
+    virtmachines=$(sudo virsh list --all --name |grep shut)
     for virtmachine in $virtmachines; do
         echo "undefine $virtmachine"
         sudo virsh undefine $virtmachine

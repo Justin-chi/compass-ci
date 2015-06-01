@@ -1,5 +1,5 @@
-rm -rf compass-install
-git clone https://github.com/Justin-chi/compass-install 
+sudo rm -rf compass-install
+sudo git clone https://github.com/Justin-chi/compass-install 
 cd compass-install
 
 function join { local IFS="$1"; shift; echo "$*"; }
@@ -8,14 +8,15 @@ source ${SCRIPT_DIR}/../deploy/func.sh
 if [[ ! -z $VIRT_NUMBER ]]; then
     mac_array=$(${SCRIPT_DIR}/../deploy/mac_generator.sh $VIRT_NUMBER)
     mac_list=$(join , $mac_array)
+    sudo chmod 777 install/group_vars/all 
     echo "pxe_boot_macs: [${mac_list}]" >> install/group_vars/all
     echo "test: true" >> install/group_vars/all
 fi
-virsh list |grep compass
+sudo virsh list |grep compass
 if [[ $? == 0 ]]; then
     compass_old=`virsh list |grep compass|awk '{print$2}'`
-    virsh destroy ${compass_old}
-    virsh undefine ${compass_old}
+    sudo virsh destroy ${compass_old}
+    sudo virsh undefine ${compass_old}
 fi
 sudo vagrant up compass_nodocker
 if [[ $? != 0 ]]; then
