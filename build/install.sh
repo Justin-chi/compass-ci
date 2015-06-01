@@ -14,10 +14,7 @@ mount -t sysfs none /sys
 mount -t devpts none /dev/pts
 
 # install/remove packages
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo apt-get -y dist-upgrade
-sudo apt-get install libxslt-dev libxml2-dev libvirt-dev build-essential qemu-utils qemu-kvm libvirt-bin virtinst -y
+
 
 #rm  /etc/resolv.conf
 #rm -rf /tmp/*
