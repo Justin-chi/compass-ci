@@ -14,7 +14,7 @@ if [[ ! -z $VIRT_NUMBER ]]; then
 fi
 sudo virsh list |grep compass
 if [[ $? == 0 ]]; then
-    compass_old=`virsh list |grep compass|awk '{print$2}'`
+    compass_old=`sudo virsh list |grep compass|awk '{print$2}'`
     sudo virsh destroy ${compass_old}
     sudo virsh undefine ${compass_old}
 fi
@@ -46,7 +46,7 @@ if [[ -n $mac_array ]]; then
             exit 1
         fi
         echo "checking pxe${i} state"
-        state=$(virsh domstate pxe${i})
+        state=$(sudo virsh domstate pxe${i})
         if [[ "$state" == "running" ]]; then
             echo "pxe${i} is running"
             sudo virsh destroy pxe${i}
