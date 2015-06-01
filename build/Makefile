@@ -40,8 +40,9 @@ export NEWFILESYSTEM := $(TOPDIR)/newiso/filesystem
 export MANIFEST_DIR = $(shell find $(NEWISO_DIR) -name filesystem.manifest)
 export SQUASHFS_DIR = $(shell find $(NEWISO_DIR) -name filesystem.squashfs)
 export FSSIZE_DIR = $(shell find $(NEWISO_DIR) -name filesystem.size)
-export POOL_DIR = $(NEWFILESYSTEM)/opt/repo/pool/main
-export DISTS_DIR = $(NEWFILESYSTEM)/opt/repo/dists/trusty/main/binary-amd64
+export REPO_DIR = $(NEWFILESYSTEM)/opt
+export POOL_DIR = $(REPO_DIR)/repo/pool/main
+export DISTS_DIR = $(REPO_DIR)/repo/dists/trusty/main/binary-amd64
 
 #
 # END of variables to customize
@@ -92,7 +93,7 @@ install-package:
 	-mkdir -p $(POOL_DIR) $(DISTS_DIR)
 	cp -f $(PACKAGECACHE)/*.deb $(POOL_DIR)
 	@sudo apt-ftparchive packages $(POOL_DIR) > $(DISTS_DIR)/Packages
-	@sed -i "s:$(NEWFILESYSTEM)::g" $(DISTS_DIR)/Packages
+	@sed -i "s:$(REPO_DIR)::g" $(DISTS_DIR)/Packages
 	@gzip -c $(DISTS_DIR)/Packages | sudo tee $(DISTS_DIR)/Packages.gz > /dev/null
 	@echo "===install package on filesystem for newiso"
 	#@sudo chroot $(NEWFILESYSTEM) sh ./install.sh
