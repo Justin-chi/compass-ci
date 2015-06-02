@@ -12,7 +12,7 @@ then
 	echo "MD5 file is not exist, so need rebuild iso"
 	find ${DEB_DIR} -type f -print0 | xargs -0 md5sum | grep -v "md5deb.txt" | tee ${MD5SUMFILE}
 	mv ${MD5SUMFILE} ${MD5SUMFILE_BAK}
-	exit 1
+	exit 0 
 else
 	echo "MD5 file is exist, so check whether update"
 	find ${DEB_DIR} -type f -print0 | xargs -0 md5sum | grep -v "md5deb.txt" | tee ${MD5SUMFILE}
@@ -22,10 +22,10 @@ else
 	then
 		echo "md5sum is different, so need rebuild iso"
 		mv ${MD5SUMFILE} ${MD5SUMFILE_BAK}
-		exit 1
+		exit 0
 	else
 		echo "md5sum is the same, no need rebuild"
-		exit 0
+		exit 1
 	fi
 fi
 
