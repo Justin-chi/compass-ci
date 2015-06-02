@@ -9,7 +9,7 @@ function tear_down_machines() {
         fi
     done
 
-    virsh  list --all|grep shut|awk '{print $2}'|xargs -n 1 virsh undefine
+    sudo virsh  list --all|grep shut|awk '{print $2}'|xargs -n 1 sudo virsh undefine
 
     vol_names=$(sudo virsh vol-list default |grep .img | awk '{print $1}')
     for vol_name in $vol_names; do 
