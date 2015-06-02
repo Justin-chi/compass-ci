@@ -18,10 +18,10 @@ if [[ $? == 0 ]]; then
     sudo virsh destroy ${compass_old}
     sudo virsh undefine ${compass_old}
 fi
-vagrant up compass_nodocker
+sudo vagrant up compass_nodocker
 if [[ $? != 0 ]]; then
     echo "installation of compass failed"
-    vagrant destroy compass_nodocker
+    sudo vagrant destroy compass_nodocker
     exit 1
 fi
 echo "compass is up"
