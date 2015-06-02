@@ -1,5 +1,5 @@
-sudo rm -rf compass-install
-sudo git clone https://github.com/Justin-chi/compass-install 
+rm -rf compass-install
+git clone https://github.com/Justin-chi/compass-install 
 cd compass-install
 
 function join { local IFS="$1"; shift; echo "$*"; }
