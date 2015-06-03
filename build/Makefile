@@ -95,6 +95,7 @@ install-package:
 	@sudo apt-ftparchive packages $(POOL_DIR) > $(DISTS_DIR)/Packages
 	@sed -i "s:$(REPO_DIR)::g" $(DISTS_DIR)/Packages
 	@gzip -c $(DISTS_DIR)/Packages | sudo tee $(DISTS_DIR)/Packages.gz > /dev/null
+	cp -f $(PACKAGECACHE)/*.img $(POOL_DIR)
 	@echo "===install package on filesystem for newiso"
 	#@sudo chroot $(NEWFILESYSTEM) sh ./install.sh
 	@chmod +w $(MANIFEST_DIR)
