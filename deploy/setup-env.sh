@@ -21,7 +21,7 @@ fi
 sudo vagrant up compass_nodocker
 if [[ $? != 0 ]]; then
     echo "installation of compass failed"
-    sudo vagrant destroy compass_nodocker
+    #sudo vagrant destroy compass_nodocker
     exit 1
 fi
 echo "compass is up"

@@ -20,4 +20,5 @@ function tear_down_machines() {
             exit 1
         fi
     done
+    sudo vagrant destroy compass_nodocker
 }
