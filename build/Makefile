@@ -91,11 +91,11 @@ install-package:
 	cp /etc/hosts $(NEWFILESYSTEM)/etc/
 	cp $(INSTALL_DIR)/install.sh $(NEWFILESYSTEM)/
 	-mkdir -p $(POOL_DIR) $(DISTS_DIR)
-	cp -f $(PACKAGECACHE)/*.deb $(POOL_DIR)
+	-cp -f $(PACKAGECACHE)/*.deb $(POOL_DIR)
 	@sudo apt-ftparchive packages $(POOL_DIR) > $(DISTS_DIR)/Packages
 	@sed -i "s:$(REPO_DIR)::g" $(DISTS_DIR)/Packages
 	@gzip -c $(DISTS_DIR)/Packages | sudo tee $(DISTS_DIR)/Packages.gz > /dev/null
-	cp -f $(PACKAGECACHE)/*.img $(POOL_DIR)
+	-cp -f $(PACKAGECACHE)/*.img $(POOL_DIR)
 	@echo "===install package on filesystem for newiso"
 	#@sudo chroot $(NEWFILESYSTEM) sh ./install.sh
 	@chmod +w $(MANIFEST_DIR)
