@@ -17,7 +17,10 @@ cp bin/switch_virtualenv.py.template bin/switch_virtualenv.py
 sed -i "s|\$PythonHome|$VIRTUAL_ENV|g" bin/switch_virtualenv.py
 #source ../compass-install/ci/allinone.conf
 /usr/bin/expect ${SCRIPT_DIR}/../deploy/remote_excute.exp \
-    "scp -r ${SCRIPT_DIR}/../deploy/status_callback.py root@${COMPASS_SERVER}:/opt/compass/bin/ansible_callbacks" \
+    "ssh root@${COMPASS_SERVER} mkdir -p /opt/compass/bin/ansible_callbacks" vagrant
+
+/usr/bin/expect ${SCRIPT_DIR}/../deploy/remote_excute.exp \
+    "scp -r ${SCRIPT_DIR}/../deploy/status_callback.py root@${COMPASS_SERVER}:/opt/compass/bin/ansible_callbacks/status_callback.py" \
     vagrant
 bin/client.py --logfile= --loglevel=debug --logdir= --compass_server="${COMPASS_SERVER_URL}" \
 --compass_user_email="${COMPASS_USER_EMAIL}" --compass_user_password="${COMPASS_USER_PASSWORD}" \
