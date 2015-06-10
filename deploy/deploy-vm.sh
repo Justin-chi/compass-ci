@@ -41,8 +41,6 @@ deploy_result=$?
 #tear_down_machines
 #cd ../compass-install
 #sudo vagrant destroy compass_nodocker
-/usr/bin/expect ${SCRIPT_DIR}/../deploy/remote_excute.exp \
-    "ssh root@${COMPASS_SERVER} rm -rf /opt/compass/bin/ansible_callbacks/status_callback.py" vagrant
 sudo rm -rf compass-core
 sudo rm -rf compass-install
 if [[ $deploy_result != 0 ]]; then
