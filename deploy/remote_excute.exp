@@ -1,0 +1,33 @@
+#!/usr/bin/expect
+
+set command [lindex $argv 0]
+#set usr [lindex $argv 1]
+set passwd [lindex $argv 1]
+#set dst_addr [lindex $argv 3]
+#
+#if { "$cmd" == "scp" } {
+#    spawn scp -rp [lindex $argv 4] "$usr"@"$dst_addr":/[lindex $argv 5]
+#} elif { "$cmd" == "rmv" } {
+#    spawn ssh "$usr"@"$dst_addr" rm -rf [lindex $argv 4]
+#} else {
+#    exit 1
+#}
+
+eval spawn "$command"
+set timeout 60
+
+expect {
+    -re ".*es.*o.*"
+    {
+        exp_send "yes\r"
+        exp_continue
+    }
+
+    -re ".*sword:" {
+        exp_send "$passwd\r"
+
+    }
+
+}
+
+interact
