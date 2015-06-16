@@ -1,3 +1,4 @@
+#!bin/bash
 sudo apt-get update -y
 sudo apt-get install git python-pip python-dev -y
 vagrant --version
