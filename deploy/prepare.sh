@@ -1,6 +1,10 @@
 #!/bin/bash
+#clean env
+ps -aux | grep vagrant | grep -v grep |awk '{print $2}' | xargs -n 1 sudo kill -9
+
 sudo apt-get update -y
 sudo apt-get install git python-pip python-dev -y
+
 vagrant --version
 if [[ $? != 0 ]]; then
     vagrant_pkg_url=https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
@@ -27,8 +31,6 @@ centos65_box_vb_url=https://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.
 centos65_box_vb_filename=$(basename ${centos65_box_vb_url})
 #wget ${precise_box_vb_url}
 
-#clean env
-#ps -aux | grep vagrant | grep -v grep |awk '{print $2}' | xargs -n 1 sudo kill -9
 source ${SCRIPT_DIR}/../deploy/func.sh
 tear_down_machines
 
