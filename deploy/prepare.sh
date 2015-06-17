@@ -28,7 +28,7 @@ centos65_box_vb_filename=$(basename ${centos65_box_vb_url})
 #wget ${precise_box_vb_url}
 
 #clean env
-ps -aux | grep vagrant | grep -v grep |awk '{print $2}' | xargs -n 1 sudo kill -9
+#ps -aux | grep vagrant | grep -v grep |awk '{print $2}' | xargs -n 1 sudo kill -9
 source ${SCRIPT_DIR}/../deploy/func.sh
 tear_down_machines
 
