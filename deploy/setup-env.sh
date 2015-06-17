@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 rm -rf compass-install
 git clone https://github.com/Justin-chi/compass-install 
 cd compass-install

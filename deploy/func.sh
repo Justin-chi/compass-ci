@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 function tear_down_machines() {
     virtmachines=$(sudo virsh list --name |grep pxe)
     for virtmachine in $virtmachines; do
