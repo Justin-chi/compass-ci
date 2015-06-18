@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 cd ..
 rm -rf compass-core
 git clone https://github.com/Justin-chi/compass-core -b dev/experimental
