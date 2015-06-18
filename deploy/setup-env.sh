@@ -2,6 +2,8 @@
 rm -rf compass-install
 git clone https://github.com/Justin-chi/compass-install 
 cd compass-install
+hash -l
+echo $PATH
 
 function join { local IFS="$1"; shift; echo "$*"; }
 source ${SCRIPT_DIR}/../deploy/conf/${CONF_NAME}.conf
@@ -61,3 +63,5 @@ if [[ -n $mac_array ]]; then
     done
 fi
 machines=${mac_list}
+hash -l
+echo $PATH

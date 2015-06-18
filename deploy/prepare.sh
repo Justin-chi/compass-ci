@@ -1,6 +1,10 @@
 #!/bin/bash
 #clean env
+hash -l
+echo $PATH
 ps -aux | grep vagrant | grep -v grep |awk '{print $2}' | xargs -n 1 sudo kill -9
+hash -l
+echo $PATH
 
 sudo apt-get update -y
 sudo apt-get install git python-pip python-dev expect -y
@@ -42,3 +46,6 @@ if [[ $? != 0 ]]; then
 else
     echo "centos65 box already exists"
 fi
+
+hash -l
+echo $PATH
